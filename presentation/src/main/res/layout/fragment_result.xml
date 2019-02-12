@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.pmanenok.antibiocalc.presentation.screens.main.result.ResultViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/defaultFragmentPadding">
+
+        <TextView
+            android:id="@+id/result_possible_tv"
+            style="@style/MainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/possible_dosage"
+            app:layout_constraintBottom_toTopOf="@id/result_antibiotic_title_tv"
+            android:paddingStart="@dimen/defaultResultTitlePadding"
+            android:paddingEnd="@dimen/defaultResultTitlePadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/result_antibiotic_title_tv"
+            style="@style/SmallTitleTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/titleMarginTop"
+            android:text="@{viewModel.resultText}"
+            app:layout_constraintBottom_toTopOf="@id/result_rv"
+            app:layout_constraintEnd_toEndOf="@id/result_possible_tv"
+            app:layout_constraintStart_toStartOf="@id/result_possible_tv"
+            app:layout_constraintTop_toBottomOf="@id/result_possible_tv" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/result_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/btnMarginTop"
+            app:layout_constraintBottom_toTopOf="@id/result_back_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result_antibiotic_title_tv" />
+
+        <Button
+            android:id="@+id/result_back_btn"
+            style="@style/MainButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btnMarginTop"
+            android:onClick="@{viewModel.onReturnClick}"
+            android:text="@string/again"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result_rv" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

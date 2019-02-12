@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.pmanenok.antibiocalc.presentation.screens.main.calc.CalcViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/defaultFragmentPadding">
+
+        <TextView
+            android:id="@+id/calc_weight_tv"
+            style="@style/MainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btnMarginTop"
+            android:text="@{viewModel.weightText}"
+            app:layout_constraintBottom_toTopOf="@id/calc_weight_seek_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/calc_weight_seek_bar"
+            style="@style/SeekBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/seekBarHeight"
+            android:layout_marginTop="@dimen/seekBarMarginTop"
+            android:max="40"
+            android:onProgressChanged="@{(seekbar, progress, fromuser) -> viewModel.onWeightProgressChanged(seekbar, progress, fromuser)}"
+            android:progress="@={viewModel.weight}"
+            app:layout_constraintBottom_toTopOf="@id/calc_choose_antibiotic_rv"
+            app:layout_constraintTop_toBottomOf="@id/calc_weight_tv" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/calc_choose_antibiotic_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/calc_dosage_tv"
+            app:layout_constraintTop_toBottomOf="@id/calc_weight_seek_bar" />
+
+        <TextView
+            android:id="@+id/calc_dosage_tv"
+            style="@style/MainTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btnMarginTop"
+            android:text="@{viewModel.dosageText}"
+            android:visibility="@{viewModel.textVisibility}"
+            app:layout_constraintBottom_toTopOf="@id/calc_dosage_seek_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calc_choose_antibiotic_rv" />
+
+
+        <SeekBar
+            android:id="@+id/calc_dosage_seek_bar"
+            style="@style/SeekBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/seekBarHeight"
+            android:layout_marginTop="@dimen/seekBarMarginTop"
+            android:max="100"
+            android:onProgressChanged="@{(seekbar, progress, fromuser) -> viewModel.onDosageProgressChanged(seekbar, progress, fromuser)}"
+            android:onStopTrackingTouch="@{(seekbar) -> viewModel.onDosageStopChanging(seekbar)}"
+            android:progress="@={viewModel.progress}"
+            android:visibility="@{viewModel.visibility}"
+            app:layout_constraintBottom_toTopOf="@id/calc_calculate_btn"
+            app:layout_constraintTop_toBottomOf="@id/calc_dosage_tv" />
+
+        <Button
+            android:id="@+id/calc_return_btn"
+            style="@style/MainButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.onReturnClick}"
+            android:text="@string/get_back"
+            android:layout_marginEnd="@dimen/btnMarginEnd"
+            app:layout_constraintBottom_toBottomOf="@id/calc_calculate_btn"
+            app:layout_constraintEnd_toStartOf="@id/calc_calculate_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/calc_calculate_btn" />
+
+        <Button
+            android:id="@+id/calc_calculate_btn"
+            style="@style/MainButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/btnMarginTop"
+            android:onClick="@{viewModel.onResultClick}"
+            android:text="@string/calculate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/calc_return_btn"
+            app:layout_constraintTop_toBottomOf="@id/calc_dosage_seek_bar"
+            app:layout_constraintVertical_bias="0.95" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android'
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //Injection
+    implementation 'javax.inject:javax.inject:1'
+    //Unit Test
+    testImplementation 'junit:junit:4.12'
+    //Module
+    api project(path: ':domain')
+}

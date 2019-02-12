@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SeekBarStyle" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressDrawable">@drawable/progress_drawable</item>
+        <item name="android:background">@null</item>
+        <item name="android:splitTrack">false</item>
+        <item name="android:thumb">@drawable/progress_thumb_drawable</item>
+    </style>
+
+    <style name="MainTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="SmallTitleTextStyle" parent="MainTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SmallestTitleTextStyle" parent="MainTextStyle">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="SimpleTextStyle" parent="MainTextStyle">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="SmallTextStyle" parent="SimpleTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MainButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@drawable/btn_background</item>
+        <item name="android:textColor">@color/btnTextColor</item>
+    </style>
+</resources>

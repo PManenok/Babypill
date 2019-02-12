@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultMarginStart">5dp</dimen>
+    <dimen name="defaultItemPadding">5dp</dimen>
+    <dimen name="defaultFragmentPadding">8dp</dimen>
+    <dimen name="defaultResultTitlePadding">6dp</dimen>
+    <dimen name="CalcFragmentPadding">8dp</dimen>
+    <dimen name="titleMarginTop">5dp</dimen>
+    <dimen name="btnMarginTop">15dp</dimen>
+    <dimen name="btnMarginEnd">10dp</dimen>
+    <dimen name="fragmentMargin">8dp</dimen>
+    <dimen name="suspensionMarginEnd">0dp</dimen>
+    <dimen name="recyclerMenuMargin">15dp</dimen>
+    <dimen name="concentrationInfoMarginEnd">10dp</dimen>
+    <dimen name="seekBarMarginTop">5dp</dimen>
+    <dimen name="seekBarHeight">40dp</dimen>
+</resources>

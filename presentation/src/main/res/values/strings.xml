@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Baby Pill</string>
+
+    <!--Main Activity View-->
+    <string name="warning">Вся информация носит исключительно ознакомительный характер, перед применением проконсультируйтесь с врачом.</string>
+
+    <!--  Menu Fragment View -->
+    <string-array name="menu">
+        <item>Антибиотики</item>
+        <item>Жаропонижающие</item>
+    </string-array>
+    <string name="menu_title">Меню:</string>
+
+    <!--  Calc Fragment View -->
+    <string name="weight_template">Вес:\ %1$s\ кг</string>
+    <string name="dosage_mg_kg_day_template">Дозировка:\ %1$s\ мг/кг/сут</string>
+    <string name="dosage_mg_kg_template">Дозировка:\ %1$s\ мг/кг</string>
+    <string name="get_back">Вернуться</string>
+    <string name="calculate">Рассчитать</string>
+
+    <!--  Result Fragment View -->
+    <string-array name="result_substances">
+        <item>Антибиотик</item>
+        <item>Жаропонижающее</item>
+    </string-array>
+    <string name="possible_dosage">Возможные назначения</string>
+    <string name="result_template">%1$s:\ %2$s\nВес:\ %3$s\ кг\nДозировка:\ %4$s\ мг/кг/сут</string>
+    <string name="result_antipyro_template">%1$s:\ %2$s\nВес:\ %3$s\ кг\nДозировка:\ %4$s\ мг/кг\nРазовая доза:\ %5$s\ мг</string>
+    <string name="again">Рассчитать заново</string>
+
+    <!-- Result Item View-->
+    <string name="item_concentration_template">Концентрация активного вещества:</string>
+    <string-array name="item_result_template">
+        <item>%1$s таб.\ %2$d раз(а) в день</item>
+        <item>%1$s мл суспензии\ %2$d раз(а) в день</item>
+        <item>%1$s мл сиропа\ %2$d раз(а) в день</item>
+        <item>%1$s суппозиторий\ %2$d раз(а) в день</item>
+    </string-array>
+    <string-array name="item_result_till_template">
+        <item>%1$s таб.\ до\ %2$d раз(а) в день</item>
+        <item>%1$s мл суспензии\ до\ %2$d раз(а) в день</item>
+        <item>%1$s мл сиропа\ до\ %2$d раз(а) в день</item>
+        <item>%1$s суппозиторий\ до\ %2$d раз(а) в день</item>
+    </string-array>
+    <string-array name="item_composition_template">
+        <item>%1$s\ \ \t%2$s\ мг в\ %3$d\ таб.</item>
+        <item>%1$s\ \ \t%2$s\ мг в\ %3$d\ мл</item>
+        <item>%1$s\ \ \t%2$s\ мг в\ %3$d\ мл</item>
+        <item>%1$s\ \ \t%2$s\ мг в\ %3$d\ супп.</item>
+    </string-array>
+    <string-array name="suspension_type">
+        <item>Суспензия</item>
+        <item>Сироп</item>
+        <item>Суппозиторий</item>
+        <item>Таблетки</item>
+    </string-array>
+    <string-array name="suspension_mass_unit">
+        <item>мл</item>
+        <item>мл</item>
+        <item>супп.</item>
+        <item>таб.</item>
+    </string-array>
+    <string name="item_result_template">%1$s:\ \ %2$s\ мг\ в\ %3$d\ %4$s\n%5$s\ %4$s\ \ %6$d\ раз(а)\ в\ день</string>
+    <string name="item_result_till_template">%1$s:\ \ %2$s\ мг\ в\ %3$d\ %4$s\n%5$s\ %4$s\ \ до\ %6$d\ раз(а)\ в\ день</string>
+
+
+    <!--  Antibiotic  -->
+    <string-array name="antibiotics">
+        <item>Амоксициллин</item>
+        <item>Амоксициллин + Клавулановая кислота</item>
+        <item>Кларитромицин</item>
+        <item>Цефуроксим</item>
+        <item>Азитромицин</item>
+        <item>Цефдинир</item>
+    </string-array>
+    <string-array name="antibiotic_substances">
+        <item>Амоксициллина</item>
+        <item>Амоксициллина</item>
+        <item>Кларитромицина</item>
+        <item>Цефуроксима</item>
+        <item>Азитромицина</item>
+        <item>Цефдинира</item>
+    </string-array>
+    <string name="clavulanic_sub">Клавулановой кислоты</string>
+
+
+    <!--  Antipyretic  -->
+    <string-array name="antipyretics">
+        <item>Парацетамол</item>
+        <item>Ибупрофен</item>
+    </string-array>
+    <string-array name="antipyretic_substances">
+        <item>Парацетамола</item>
+        <item>Ибупрофена</item>
+    </string-array>
+
+    <!-- Error Message-->
+    <string name="error_drug_not_choosed">Выберите пункт меню</string>
+</resources>

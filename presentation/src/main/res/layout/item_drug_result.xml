@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.gmail.pmanenok.antibiocalc.presentation.screens.main.result.recycler.ResultItemViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/fragment_background"
+        android:padding="@dimen/defaultItemPadding">
+
+        <TextView
+            android:id="@+id/item_biotic_dose_per_day_tv"
+            style="@style/SimpleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultMarginStart"
+            android:text="@{item.drugType}"
+            app:concentration="@{item.concentrationText}"
+            app:concentrationIn="@{item.concentrationIn}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:result="@{item.resultText}"
+            app:substanceType="@{item.substanceType}"
+            app:times="@{item.times}" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

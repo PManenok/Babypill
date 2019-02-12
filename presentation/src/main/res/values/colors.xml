@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9575CD</color>
+    <color name="colorPrimaryDark">#4527A0</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="textColor">#C6FFFFFF</color>
+    <color name="btnTextColor">#C6FFFFFF</color>
+    <color name="colorBtn">#C64527A0</color>
+
+    <color name="colorSeekBarBackground">#F0FFFFFF</color>
+    <color name="colorSeekBarProgress">#673AB7</color>
+    <color name="colorSeekBarThumb">#4527A0</color>
+
+    <color name="colorBackgroundStart">#6A1B9A</color>
+    <color name="colorBackgroundEnd">#4527A0</color>
+
+    <color name="colorFragmentBackground">#39F1F1F1</color>
+
+    <color name="colorItemBackground">#39F1F1F1</color>
+    <color name="colorItemTapedBackground">#C64527A0</color>
+</resources>
