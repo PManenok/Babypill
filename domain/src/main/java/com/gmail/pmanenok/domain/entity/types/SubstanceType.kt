@@ -20,6 +20,16 @@ enum class SubstanceType : TypedEnum {
         override fun getId(): Int {
             return 3
         }
+    },
+    SOLUTION {
+        override fun getId(): Int {
+            return 4
+        }
+    },
+    POWDER {
+        override fun getId(): Int {
+            return 5
+        }
     };
 
     override fun getTypeId(): Int {

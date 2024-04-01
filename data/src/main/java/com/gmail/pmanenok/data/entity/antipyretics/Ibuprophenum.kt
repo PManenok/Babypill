@@ -9,7 +9,9 @@ import com.gmail.pmanenok.domain.entity.types.AntipyreticType
 object Ibuprophenum : BaseAntipyro {
     override val type: AntipyreticType = AntipyreticType.IBUPROPHENUM
     override val basicDoseInd: Int = 0
-    override val dosesList = arrayOf(5, 10)
+    override val dosesList = arrayOf(5f, 10f)
+    override val agesList: Array<Int> = emptyArray()
+    override val ageIsMainValue: Boolean=false
     override val consist = arrayOf(
         ConsistValues(listOf(60f), 1, 4, SubstanceType.SUPPOSITORY),
         ConsistValues(listOf(100f), 5, 4, SubstanceType.SYRUP),

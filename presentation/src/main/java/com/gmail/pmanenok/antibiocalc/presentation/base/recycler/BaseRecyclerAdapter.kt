@@ -1,7 +1,6 @@
 package com.gmail.pmanenok.antibiocalc.presentation.base.recycler
 
-import android.support.v7.widget.RecyclerView
-import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject

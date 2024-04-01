@@ -51,6 +51,10 @@ interface BaseAntipyro : BaseDrug {
         return Pair(minValue, maxValue)
     }
 
+    override fun getResults(age: Int): List<Result> {
+        return emptyList()
+    }
+
     private fun roundSuspension(result: Float): Float {
         return (result * 100).toInt() / 100f
     }

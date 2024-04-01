@@ -1,14 +1,20 @@
 apply plugin: 'com.android.library'
-
-apply plugin: 'kotlin-kapt'
-
 apply plugin: 'kotlin-android'
-android {
-    compileSdkVersion rootProject.compileSdkVersion
 
+android {
+    namespace 'com.gmail.pmanenok.data'
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {
@@ -17,7 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -26,7 +31,7 @@ dependencies {
     //Injection
     implementation 'javax.inject:javax.inject:1'
     //Unit Test
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
     //Module
     api project(path: ':domain')
 }

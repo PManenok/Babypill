@@ -1,8 +1,6 @@
 package com.gmail.pmanenok.antibiocalc.presentation.base.recycler
 
-import android.databinding.ObservableInt
-import android.util.Log
-import io.reactivex.disposables.CompositeDisposable
+import androidx.databinding.ObservableInt
 import io.reactivex.disposables.Disposable
 
 abstract class BaseItemViewModel<Entity> {

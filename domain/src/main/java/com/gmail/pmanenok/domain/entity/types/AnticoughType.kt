@@ -1,23 +1,23 @@
 package com.gmail.pmanenok.domain.entity.types
 
-
-enum class MenuType: TypedEnum {
-    ANTIBIOTIC {
+enum class AnticoughType : TypedEnum {
+    AMBROXOL {
         override fun getId(): Int {
             return 0
         }
     },
-    ANTIPYRETIC {
+    ACETYLCYSTEINE {
         override fun getId(): Int {
             return 1
         }
-    },
-    ANTICOUGH {
+    }/*,
+    THEOPHYLLINUM_GUAIFENESINUM {
         override fun getId(): Int {
             return 2
         }
-    };
+    }*/;
     override fun getTypeId(): Int {
-        return -1
+        return 2
     }
 }
+

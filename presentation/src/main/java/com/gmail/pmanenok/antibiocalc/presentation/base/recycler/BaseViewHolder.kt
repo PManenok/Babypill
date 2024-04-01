@@ -1,8 +1,9 @@
 package com.gmail.pmanenok.antibiocalc.presentation.base.recycler
 
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
-import com.android.databinding.library.baseAdapters.BR
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.gmail.pmanenok.antibiocalc.BR
+
 
 abstract class BaseViewHolder<Entity, VM : BaseItemViewModel<Entity>, Binding : ViewDataBinding>
     (val binding: Binding, val viewModel: VM) : RecyclerView.ViewHolder(binding.root) {

@@ -1,8 +1,9 @@
 package com.gmail.pmanenok.antibiocalc.presentation.screens.main.calc
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmail.pmanenok.antibiocalc.R
 import com.gmail.pmanenok.antibiocalc.databinding.FragmentCalcBinding
 import com.gmail.pmanenok.antibiocalc.presentation.base.BaseMvvmFragment
@@ -22,7 +23,7 @@ class CalcFragment : BaseMvvmFragment<CalcViewModel, MainRouter, FragmentCalcBin
     }
 
     override fun prodiveViewModel(): CalcViewModel {
-        return ViewModelProviders.of(this).get(CalcViewModel::class.java)
+        return ViewModelProvider(this).get(CalcViewModel::class.java)
     }
 
     override fun provideLayoutId(): Int = R.layout.fragment_calc

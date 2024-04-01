@@ -1,9 +1,9 @@
 package com.gmail.pmanenok.antibiocalc.presentation.base
 
 import android.content.Intent
-import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 
 abstract class BaseRouter<A : BaseActivity>(val activity: A) {
 
@@ -16,7 +16,7 @@ abstract class BaseRouter<A : BaseActivity>(val activity: A) {
     }
 
     fun showError(e: Throwable) {
-        Log.e("Error in Router", e.message)
+        Log.e("Error in Router", e.message?:"empty message")
         Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
     }
 

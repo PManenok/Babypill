@@ -1,15 +1,16 @@
 package com.gmail.pmanenok.antibiocalc.presentation.screens.main.calc
 
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
 import android.view.View
 import android.widget.SeekBar
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import com.gmail.pmanenok.antibiocalc.R
 import com.gmail.pmanenok.antibiocalc.presentation.app.App
 import com.gmail.pmanenok.antibiocalc.presentation.base.BaseViewModel
 import com.gmail.pmanenok.antibiocalc.presentation.screens.main.MainRouter
 import com.gmail.pmanenok.antibiocalc.presentation.screens.main.recycler.TypedEnumAdapter
+import com.gmail.pmanenok.antibiocalc.presentation.utils.roundFloat
 import com.gmail.pmanenok.domain.entity.drug.BaseDrug
 import com.gmail.pmanenok.domain.entity.types.MenuType
 import com.gmail.pmanenok.domain.usecase.drug.GetDrugListUseCase
@@ -29,22 +30,32 @@ class CalcViewModel : BaseViewModel<MainRouter>() {
     @Inject
     lateinit var getDrugUseCase: GetDrugUseCase
 
+    private val maxAge = 17
+    private val maxWeight = 40
+
     lateinit var drugType: MenuType
     private var currentDrug: BaseDrug? = null
+    private var isWeight = false
     private var dosesCount = 0
     private var dosageInd = 0
-    val visibility = ObservableBoolean(false)
-    val textVisibility = ObservableBoolean(false)
-    val progress = ObservableInt(0)
-    val weight = ObservableInt(0)
-    val weightText = ObservableField<String>("")
+
+    val maxValue = ObservableInt(0)
+
     val dosageText = ObservableField<String>("")
+    val dosageProgress = ObservableInt(0)
+    val dosageVisibility = ObservableBoolean(false)
+    val dosageTextVisibility = ObservableBoolean(false)
+
+    val value = ObservableInt(0)
+    val valueText = ObservableField<String>("")
+    val valueVisibility = ObservableBoolean(false)
 
     val onResultClick = View.OnClickListener {
         val drug = currentDrug
         if (drug != null) {
             adapter.clearDisposables()
-            router?.goToResultFragment(drugType, drug.type, weight.get() + 1, dosageInd)
+            if (isWeight) router?.goToResultFragment(drugType, drug.type, value.get() + 1, dosageInd, isWeight)
+            else router?.goToResultFragment(drugType, drug.type, value.get() + 2, dosageInd, isWeight)
         } else {
             router?.showMessage(router?.getResourceString(R.string.error_drug_not_choosed) ?: "Nothing was choosed")
         }
@@ -58,6 +69,11 @@ class CalcViewModel : BaseViewModel<MainRouter>() {
         addToDisposable(getDrugUseCase.getDrug(it).subscribeBy(
             onNext = { drug ->
                 currentDrug = drug
+                val oldValue=isWeight
+                isWeight = !drug.ageIsMainValue
+                if (oldValue!=isWeight){
+                    value.set(0)
+                }
                 updateValues()
             },
             onError = { error ->
@@ -74,7 +90,6 @@ class CalcViewModel : BaseViewModel<MainRouter>() {
                 adapter.cleanItems()
                 adapter.addItems(it.toList())
                 if (currentDrug != null) adapter.taped?.offer(currentDrug?.type?.getId())
-                weightText.set(router?.getWeightString(if (weight.get() == 40) "${weight.get()}>" else (weight.get() + 1).toString()))
             },
             onError = {
                 router?.showError(it)
@@ -82,8 +97,9 @@ class CalcViewModel : BaseViewModel<MainRouter>() {
         ))
     }
 
-    fun onWeightProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-        weightText.set(router?.getWeightString(if (progress == seekBar.max) "$progress>" else (progress + 1).toString()))
+    fun onValueProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        if (isWeight) valueText.set(router?.getWeightString(if (progress == seekBar.max) "$progress>" else (progress + 1).toString()))
+        else valueText.set(router?.getAgeString(if (progress == seekBar.max) "${progress + 1}>" else (progress + 2).toString()))
     }
 
     fun onDosageProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
@@ -99,28 +115,43 @@ class CalcViewModel : BaseViewModel<MainRouter>() {
     }
 
     fun onDosageStopChanging(seekBar: SeekBar) {
-        progress.set((dosageInd) * seekBar.max / dosesCount)
+        dosageProgress.set((dosageInd) * seekBar.max / dosesCount)
     }
 
     private fun updateValues() {
         if (currentDrug != null) {
-            if (currentDrug!!.type.getTypeId() == MenuType.ANTIPYRETIC.getId()) {
-                dosageText.set(router?.getDayDosageString("${currentDrug!!.dosesList[0]}-${currentDrug!!.dosesList[1]}"))
-                visibility.set(false)
-            } else if (currentDrug!!.dosesList.size == 1) {
-                dosageInd = 0
-                dosageText.set(router?.getDosageString(currentDrug!!.dosesList[0].toString()))
-                visibility.set(false)
+            if (isWeight) {
+                dosageVisibility()
+                maxValue.set(maxWeight)
+                valueText.set(router?.getWeightString(if (value.get() == maxWeight) "${value.get()}>" else (value.get() + 1).toString()))
+                valueVisibility.set(true)
             } else {
-                dosageInd = currentDrug!!.basicDoseInd
-                dosageText.set(router?.getDosageString(currentDrug!!.dosesList[dosageInd].toString()))
-                dosesCount = currentDrug!!.dosesList.size - 1
-                progress.set(dosageInd * 100 / dosesCount)
-                visibility.set(true)
+                dosageVisibility.set(false)
+                dosageTextVisibility.set(false)
+                maxValue.set(maxAge)
+                valueText.set(router?.getAgeString(if (value.get() == maxAge) "${value.get() + 1}>" else (value.get() + 2).toString()))
+                valueVisibility.set(true)
             }
-            textVisibility.set(true)
         } else {
             router?.showMessage(router?.getResourceString(R.string.error_drug_not_choosed) ?: "Nothing was choosed")
         }
+    }
+
+    private fun dosageVisibility() {
+        if (currentDrug!!.type.getTypeId() == MenuType.ANTIPYRETIC.getId() || currentDrug!!.type.getTypeId() == MenuType.ANTICOUGH.getId()) {
+            dosageText.set(router?.getDayDosageString(roundFloat(currentDrug!!.dosesList[0])+"-"+roundFloat(currentDrug!!.dosesList[1])))
+            dosageVisibility.set(false)
+        } else if (currentDrug!!.dosesList.size == 1) {
+            dosageInd = 0
+            dosageText.set(router?.getDosageString(roundFloat(currentDrug!!.dosesList[0])))
+            dosageVisibility.set(false)
+        } else {
+            dosageInd = currentDrug!!.basicDoseInd
+            dosageText.set(router?.getDosageString(roundFloat(currentDrug!!.dosesList[dosageInd])))
+            dosesCount = currentDrug!!.dosesList.size - 1
+            dosageProgress.set(dosageInd * 100 / dosesCount)
+            dosageVisibility.set(true)
+        }
+        dosageTextVisibility.set(true)
     }
 }

@@ -1,12 +1,20 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
-android {
-    compileSdkVersion rootProject.compileSdkVersion
 
+android {
+    namespace 'com.gmail.pmanenok.domain'
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {
@@ -15,15 +23,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //RxJava
-    api 'io.reactivex.rxjava2:rxjava:2.2.2'
-    api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+
+    //RxJava
+    api "io.reactivex.rxjava2:rxjava:$rxBinding"
+    api "io.reactivex.rxjava2:rxkotlin:$rxBinding"
     //Injection
     implementation 'javax.inject:javax.inject:1'
 }

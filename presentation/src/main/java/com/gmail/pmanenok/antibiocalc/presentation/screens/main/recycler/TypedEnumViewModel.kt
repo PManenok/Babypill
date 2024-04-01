@@ -1,12 +1,11 @@
 package com.gmail.pmanenok.antibiocalc.presentation.screens.main.recycler
 
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
 import android.util.Log
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import com.gmail.pmanenok.antibiocalc.presentation.base.recycler.BaseItemViewModel
 import com.gmail.pmanenok.domain.entity.types.TypedEnum
-import io.reactivex.disposables.Disposable
 import io.reactivex.processors.BehaviorProcessor
 import io.reactivex.rxkotlin.subscribeBy
 

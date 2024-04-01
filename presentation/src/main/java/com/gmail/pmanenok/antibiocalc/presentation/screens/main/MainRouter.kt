@@ -16,13 +16,18 @@ class MainRouter(activity: MainActivity) : BaseRouter<MainActivity>(activity) {
     }
 
     fun goToCalcFragment(drugType: MenuType) {
-        replaceFragment(activity.supportFragmentManager, CalcFragment.getInstance(drugType), R.id.main_frame_layout, true)
-    }
-
-    fun goToResultFragment(drugType: MenuType, drugSubtype: TypedEnum, weight: Int, dosageInd: Int) {
         replaceFragment(
             activity.supportFragmentManager,
-            ResultFragment.getInstance(drugType, drugSubtype, weight, dosageInd),
+            CalcFragment.getInstance(drugType),
+            R.id.main_frame_layout,
+            true
+        )
+    }
+
+    fun goToResultFragment(drugType: MenuType, drugSubtype: TypedEnum, value: Int, dosageInd: Int, isWeight: Boolean) {
+        replaceFragment(
+            activity.supportFragmentManager,
+            ResultFragment.getInstance(drugType, drugSubtype, value, dosageInd, isWeight),
             R.id.main_frame_layout,
             true
         )
@@ -41,6 +46,7 @@ class MainRouter(activity: MainActivity) : BaseRouter<MainActivity>(activity) {
             R.string.dosage_mg_kg_template, dose
         )
     }
+
     fun getDosageString(dose: String): String {
         return activity.resources.getString(
             R.string.dosage_mg_kg_day_template, dose
@@ -51,5 +57,9 @@ class MainRouter(activity: MainActivity) : BaseRouter<MainActivity>(activity) {
         return activity.resources.getString(
             R.string.weight_template, weight
         )
+    }
+
+    fun getAgeString(age: String): String {
+        return activity.resources.getString(R.string.age_template, age)
     }
 }

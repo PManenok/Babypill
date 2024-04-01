@@ -8,8 +8,10 @@ import com.gmail.pmanenok.domain.entity.types.AntibioticType
 
 object Clavulanic : BaseAntibio {
     override val type: AntibioticType = AntibioticType.CLAVULANIC
-    override val basicDoseInd: Int = 0
-    override val dosesList = arrayOf(30, 50, 70)
+    override val basicDoseInd: Int = 2
+    override val dosesList = arrayOf(30f, 40f, 50f, 60f, 70f, 80f, 90f)
+    override val agesList: Array<Int> = emptyArray()
+    override val ageIsMainValue: Boolean=false
     override val consist = arrayOf(
         ConsistValues(listOf(125f, 31.25f), 5, 3, SubstanceType.SUSPENSION),
         ConsistValues(listOf(250f, 62.5f), 5, 3, SubstanceType.SUSPENSION),

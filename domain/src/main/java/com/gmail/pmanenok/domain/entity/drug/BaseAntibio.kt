@@ -10,7 +10,7 @@ interface BaseAntibio : BaseDrug {
     override fun getResults(weight: Int, dosageIndex: Int): List<Result> {
         val list = mutableListOf<Result>()
         for (element in consist) {
-            if (weight >= 30 && element.subType == SubstanceType.SUSPENSION && type != AntibioticType.CEFDINIR && dosageIndex > 0) {
+            if (weight >= 30 && element.subType == SubstanceType.SUSPENSION && type != AntibioticType.CEFDINIR && dosageIndex > 1) {
                 continue
             }
             val item = Result()
@@ -28,6 +28,10 @@ interface BaseAntibio : BaseDrug {
             }
         }
         return list
+    }
+
+    override fun getResults(age: Int): List<Result> {
+        return emptyList()
     }
 
     fun countResult(weight: Int, dosageIndex: Int, element: ConsistValues): Float {

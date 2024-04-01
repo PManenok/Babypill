@@ -8,7 +8,9 @@ import com.gmail.pmanenok.domain.entity.types.AntibioticType
 object Clarithromicin : BaseAntibio {
     override val type: AntibioticType = AntibioticType.CLARITHROMICIN
     override val basicDoseInd: Int = 0
-    override val dosesList = arrayOf(15)
+    override val dosesList = arrayOf(15f)
+    override val agesList: Array<Int> = emptyArray()
+    override val ageIsMainValue: Boolean=false
     override val consist = arrayOf(
         ConsistValues(listOf(125f), 5, 2, SubstanceType.SUSPENSION),
         ConsistValues(listOf(250f), 5, 2, SubstanceType.SUSPENSION),

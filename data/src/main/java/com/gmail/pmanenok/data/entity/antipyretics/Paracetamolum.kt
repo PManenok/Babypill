@@ -9,7 +9,9 @@ import com.gmail.pmanenok.domain.entity.types.AntipyreticType
 object Paracetamolum : BaseAntipyro {
     override val type: AntipyreticType = AntipyreticType.PARACETAMOLUM
     override val basicDoseInd: Int = 0
-    override val dosesList = arrayOf(10, 15)
+    override val dosesList = arrayOf(10f, 15f)
+    override val agesList: Array<Int> = emptyArray()
+    override val ageIsMainValue: Boolean=false
     override val consist = arrayOf(
         ConsistValues(listOf(120f), 5, 4, SubstanceType.SYRUP),
         ConsistValues(listOf(150f), 5, 4, SubstanceType.SYRUP),

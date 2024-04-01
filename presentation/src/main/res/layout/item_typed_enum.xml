@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="item"
-            type="com.gmail.pmanenok.antibiocalc.presentation.screens.main.recycler.TypedEnumViewModel" />
+                name="item"
+                type="com.gmail.pmanenok.antibiocalc.presentation.screens.main.recycler.TypedEnumViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:background='@{item.taped ? @drawable/item_taped_background : @drawable/item_background}'>
-
-        <TextView
-            style="@style/MainTextStyle"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="@{item.itemName}"
-            app:drugType="@{item.drugType}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="3dp"
+            android:background='@{item.taped ? @drawable/item_taped_background : @drawable/item_background}'>
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+                style="@style/MainTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@{item.itemName}"
+                app:drugType="@{item.drugType}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
